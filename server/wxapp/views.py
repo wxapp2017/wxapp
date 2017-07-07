@@ -22,34 +22,22 @@ def index(request):
     f.write(photo.read())
     f.close()
 
-
-
     # p = Essay(area=area,Essay=essay,)
     # p.save()
     return HttpResponse("Hello world ! ")
 
-
-def photo(request):
-    print 22222222
-
-
-
-
-    return HttpResponse("finish ")
 
 
 def down(request):
     filename = 'F:/wxapp/server/default.png'
     f = open(filename,'rb')
 
-
-    print f
     c = f.read()
     # print c
     # f .close()
     response = HttpResponse(c, content_type='application/octet-stream')
     response['Content-Disposition'] = 'attachment; filename=default.png'
 
-    print response
-    print 333333333
+
+
     return response
