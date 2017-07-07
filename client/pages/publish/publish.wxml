@@ -29,6 +29,7 @@
         wx:if="{{item.textarea}}">
       </textarea>
 
+
       <button
         formType="submit"
         class="signup-btn"
@@ -37,5 +38,20 @@
       </button>
     </view>
   </form>
+
+<!--<view wx:if="{{pic == 0}}">
+  <button plain='True' bindtap="bindViewTap" type="submit">绑定事件</button>
+</view>-->
+
+
+<!--<view wx:if="{{pic == 1}}"><image src="{{avatarUrl}}"></image></view>>-->
+
+<view>
+ <image wx:for="{{pictures}}" src="{{item}}" bindtap="previewImage"></image>
+</view>
+
+<view>
+  <button plain='True' bindtap="bindViewTap" type="submit">绑定事件</button>
+</view>
 
 </view>

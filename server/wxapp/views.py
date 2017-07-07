@@ -10,10 +10,10 @@ from models import *
 # Create your views here.
 
 @csrf_exempt
-def index(request):
-    # area = request.GET['area']
-    # essay = request.GET['essay']
-
+def publish(request):
+    print request.POST
+    area = request.POST['area']
+    essay = request.POST['essay']
     photo = request.FILES['photo']
     photo_path = './dat/'
     photo_last = str(photo).split('.')[-1]
@@ -22,8 +22,8 @@ def index(request):
     f.write(photo.read())
     f.close()
 
-    # p = Essay(area=area,Essay=essay,)
-    # p.save()
+    p = Essay(area=area,Essay=essay,)
+    p.save()
     return HttpResponse("Hello world ! ")
 
 

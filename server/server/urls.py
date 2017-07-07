@@ -19,7 +19,6 @@ from wxapp import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index),
-    url(r'^up/$', views.photo),
+    url(r'^$', views.publish),
     url(r'^down/$', views.down),
 ]
