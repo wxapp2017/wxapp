@@ -1,0 +1,11 @@
+{
+  "pages":[
+    "pages/publish/publish"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "SharedLife",
+    "navigationBarTextStyle":"black"
+  }
+}
