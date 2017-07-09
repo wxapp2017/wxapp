@@ -1,9 +1,11 @@
+
+var app=getApp()
+
 Page({
   data: {
     pic:0,
     pictures:[],
-    a : [1,2,3],
-    avatarUrl:null,
+    uploadpic:[],
 
     items: [
       {
@@ -19,21 +21,20 @@ Page({
         'textarea': true
       },
       {
-        'name': '发布',
+        'name': '发送',
         'button': true
       }
-    ]
+
+      ]
+      
   },
 
   onLoad: function(options) {
 
-    console.log('11111')
     console.log(this.data.pictures)
     console.log(this.data.a)
     // Do some initialize when page load.
   },
-
-
 
   bindPickerChange: function (e) {
     var index = e.target.dataset.index,
@@ -52,18 +53,17 @@ Page({
     var that = this;
     var pic = that.data.pic + 1
     var pict = that.data.pictures
+    var uploadpic = that.data.uploadpic
     wx.chooseImage({
-    // 设置最多可以选择的图片张数，默认9,如果我们设置了多张,那么接收时//就不在是单个变量了,
-      count: 2, 
+    
+      count: 8, 
       sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
       sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
       success: function(res){
         // 获取成功,将获取到的地址赋值给临时变量
         var tempFilePaths = res.tempFilePaths;
         pict[pic-1] = res.tempFilePaths;
-        console.log('2323232')
-        console.log(pict)
-        console.log(pic)
+        uploadpic[pic-1] = res.tempFilePaths[0]
         that.setData({
         //将临时变量赋值给已经在data中定义好的变量
           // avatarUrl:tempFilePaths,
@@ -71,29 +71,29 @@ Page({
           pic:pic
         })
       },
-      fail: function(res) {
-        // fail
-      },
-      complete: function(res) {
-        // complete
-      }
     })
   },
 
 
 
    formSubmit: function(e){
-    console.log(e.detail.value)
     var formData = e.detail.value
-
-    
+    var pics = this.data.uploadpic
             wx.uploadFile({
               url: 'http://127.0.0.1:8000/', //仅为示例，非真实的接口地址
-              filePath: tempFilePaths[0],
+              filePath: pics[0],
               name: 'photo',
               formData: formData,
               success: function (res) {
+                  delete pics[0]
+                  app.uploadimg({
+                    url: 'http://127.0.0.1:8000/',
+                    path:pics
+                  })
+                  console.log('111111')
+                  // console.log(delete this.data.uploadpic[0])
                   console.log(res.data)
+
                   //do something
           },
               fail:function(res){

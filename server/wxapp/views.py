@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 from PIL import Image
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -12,9 +17,16 @@ from models import *
 @csrf_exempt
 def publish(request):
     print request.POST
-    area = request.POST['area']
-    essay = request.POST['essay']
+    try:
+        area = request.POST['area']
+        essay = request.POST['essay']
+        p = Essay(area=area, Essay=essay, )
+        p.save()
+    except:
+        print u'多图片上传'
     photo = request.FILES['photo']
+    # print len(photo)
+
     photo_path = './dat/'
     photo_last = str(photo).split('.')[-1]
     photo_name = 'default.%s' % (photo_last)
@@ -22,8 +34,15 @@ def publish(request):
     f.write(photo.read())
     f.close()
 
-    p = Essay(area=area,Essay=essay,)
-    p.save()
+    # for p in photo:
+    #     print p
+    #     photo_last = str(p).split('.')[-1]
+    #     photo_name = 'default.%s' % (photo_last)
+    #     f = open(photo_path + photo_name, 'wb+')
+    #     f.write(p.read())
+    #     f.close()
+
+
     return HttpResponse("Hello world ! ")
 
 

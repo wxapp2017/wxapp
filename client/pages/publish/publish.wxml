@@ -1,8 +1,19 @@
 <!--index.wxml-->
 <view class="gs-signup">
 
-  <form bindsubmit="formSubmit" class="signup-form" >
+  <form bindsubmit="formSubmit" class="signup-form" flex-direction:column>
+  <view>
+  <view>
+     <text class="signup-text">11111</text>
+     <button
+        class="signup-btn">
+        发送
+      </button>
+  </view>
+    <view>
     <view wx:for="{{items}}" class="signup-section">
+
+      
       <view 
         class="signup-item"
         wx:if="{{item.picker}}">
@@ -28,15 +39,24 @@
         value='111'
         wx:if="{{item.textarea}}">
       </textarea>
-
-
-      <button
-        formType="submit"
+      
+<!--<button
         class="signup-btn"
         wx:if="{{item.button}}">
         {{item.name}}
-      </button>
-    </view>
+      </button>-->
+
+
+
+<!--<view >
+ <image class="pic_upload" wx:for="{{pictures}}" src="{{item}}" bindtap="previewImage"></image>
+ <view wx:if="{{pic < 5}}">
+  <image class="pic_upload" src="./pic/addpic.jpg" plain='True' bindtap="bindViewTap" type="submit"></image>
+</view>
+</view>-->
+  </view>
+  </view>
+  </view>
   </form>
 
 <!--<view wx:if="{{pic == 0}}">
@@ -47,11 +67,12 @@
 <!--<view wx:if="{{pic == 1}}"><image src="{{avatarUrl}}"></image></view>>-->
 
 <view>
- <image wx:for="{{pictures}}" src="{{item}}" bindtap="previewImage"></image>
+ <image class="pic_upload" wx:for="{{pictures}}" src="{{item}}" bindtap="previewImage"></image>
+ <view wx:if="{{pic < 5}}">
+  <image class="pic_upload" src="./pic/addpic.jpg" plain='True' bindtap="bindViewTap" type="submit"></image>
+</view>
 </view>
 
-<view>
-  <button plain='True' bindtap="bindViewTap" type="submit">绑定事件</button>
-</view>
+
 
 </view>
