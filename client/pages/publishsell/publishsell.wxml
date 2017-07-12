@@ -1,0 +1,65 @@
+<!--pages/publishsell/publishsell.wxml-->
+<view class="content-colum">
+<view class='content-row'>
+      <view class="signup-item">
+        商品类型
+      </view>
+      <picker 
+        name='type'
+        bindchange="bindPickerChange"
+        class="signup-singleline" 
+        value="{{typeindex}}" 
+        range="{{typerange}}"
+        bindchange="bindPickerChange">
+        {{typerange[typeindex]}}
+      </picker>
+</view>
+<image class="pic_upload"  src="./pic/addpic.jpg" bindtap="previewImage"></image>
+
+<view class="price"><text >价格: </text>
+<input  maxlength="10" placeholder="RMB" /></view>
+
+</view>
+
+ <view class="weui-cells__title">商品介绍</view>
+        <view class="after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="介绍一下的你商品..." style="height: 3.3em" />
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+        </view>
+
+<view class="address">商品地址</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">详细地址</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input placeholder="请输入"/>
+                </view>
+            </view>
+            </view>
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">院区</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="bindAreaChange" value="{{areaindex}}" range="{{arearange}}">
+                        <view class="weui-select_in-select-after">{{arearange[areaindex]}}</view>
+                    </picker>
+                </view>
+          </view>
+
+ <view class="weui-cells__title">配送方式</view>
+        
+            <checkbox-group bindchange="checkboxChange">
+                <label wx:for="{{checkboxItems}}">
+                    <checkbox value="{{item.value}}" checked="{{item.checked}}"/>   
+                    {{item.name}}     
+                </label>
+            </checkbox-group>
+        
+     

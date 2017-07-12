@@ -1,6 +1,7 @@
 {
   "pages":[
-    "pages/publish/publish"
+    "pages/publishsell/publishsell",
+    "pages/publishweibo/publishweibo"
   ],
   "window":{
     "backgroundTextStyle":"light",

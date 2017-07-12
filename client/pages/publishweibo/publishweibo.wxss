@@ -18,18 +18,19 @@
   width: 90%;
   padding-top: 30rpx;
   overflow: hidden;
-  flex-direction: column;
+  
 }
 .signup-section {
   display: flex;
+  flex-direction: column;  
   line-height: 70rpx;
-  margin-bottom: 30rpx;
-  margin-top: 90rpx;
+  margin-bottom: 0rpx;
+  margin-top: 10rpx;
   overflow: hidden;
   /*background-color: #fff;*/
 }
 .signup-item {
-  width: 30%;
+  width: 20%;
   text-align: right;
   padding-right: 10rpx;
   color: #555;
@@ -45,7 +46,7 @@
   color: #999;
 }
 .signup-multiline {
-  margin-left: 2%;
+  margin-left: 5%;
   width: 68%;
   line-height: 60rpx;
   padding-left: 10rpx;
@@ -65,6 +66,7 @@
 .signup-textarea {
   height: 180rpx;
   line-height: 60rpx;
+  font-size: 30rpx;
 }
 .signup-btn {
   float: right;
@@ -79,7 +81,7 @@
 }
 .signup-text {
   float: left;
-  margin: 10px;
+  margin: 15px;
   
 }
 .button-hover {
@@ -96,11 +98,30 @@
 .pic_upload {
   float: left;
   padding-left: 10px;
-  padding-top: 0rpx;
+  padding-top: 10rpx;
   border-width: 20px;
   width: 20%;
   height: 150rpx;
   line-height: 70rpx;
   color: #fff;
   border-radius:10rpx
+}
+.title-publish {
+  background-color: #eee;
+}
+.select_area {
+  justify-content: center;
+}
+.content-column{    
+  display: flex;  
+  flex-direction: column;  
+}  
+.content-row{    
+  display: flex;  
+  flex-direction: row; 
+}  
+.upload_text {
+  font-size:25rpx;
+  color:#666666;
+  padding-left: 40rpx;
 }

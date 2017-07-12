@@ -1,0 +1,98 @@
+/* pages/publishsell/publishsell.wxss */
+
+
+.signup-item {
+  width: 20%;
+  text-align: right;
+  padding-left:40rpx;
+  padding-right: 10rpx;
+  padding-top: 15rpx;
+  color: #555;
+}
+
+.signup-singleline {
+  margin-left: 2%;
+  width: 68%;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding-left: 10rpx;
+  border-radius: 5rpx;
+  background-color: #fff;
+  color: #999;
+}
+
+.content-colum{    
+  display: flex;  
+  flex-direction: column;  
+}  
+.content-row{    
+  display: flex;  
+  flex-direction: row; 
+}  
+
+.pic_upload {
+  float: left;
+  padding-left: 200rpx;
+  padding-top: 10rpx;
+  border-width: 20px;
+  width: 50%;
+  height: 300rpx;
+  line-height: 70rpx;
+  color: #fff;
+  border-radius:10rpx
+}
+.weui-cells__title
+{margin-top:.77em;margin-bottom:.3em;padding-left:15px;padding-right:15px;color:#999;font-size:14px}
+
+.after-title{margin-top:0}
+
+.weui-cell{padding:10px 15px;position:relative;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center}
+
+.weui-cell__bd{
+-webkit-box-flex:1;
+-webkit-flex:1;
+flex:1;
+border-top:1rpx solid;
+border-bottom:1rpx solid;
+border-color:#eee;
+}
+
+.weui-textarea{display:block;width:100%}
+
+.weui-textarea-counter{color:#b2b2b2;text-align:right}
+
+.price{
+	display: flex;  
+  	flex-direction: row;
+  	padding: 30rpx;
+}
+
+.weui-label{width:105px;word-wrap:break-word;word-break:break-all}
+
+.weui-input{height:2.58823529em;min-height:2.58823529em;line-height:2.58823529em}
+
+.address{
+margin-top:.77em;
+margin-bottom:.3em;
+padding-left:15px;
+padding-right:15px;
+color:#999;
+font-size:14px
+border-bottom:1rpx solid;
+border-color:#eee;
+}
+
+
+.weui-cells_after-title{margin-top:0}
+.weui-select_in-select-after{padding-left:0}
+
+.weui-check__hd_in-checkbox{padding-right:.35em}
+
+.weui-icon-checkbox_circle,.weui-icon-checkbox_success{margin-left:4.6px;margin-right:4.6px}
+
+.weui-cell__bd{-webkit-box-flex:1;-webkit-flex:1;flex:1}
+.weui-check__label:active{background-color:#ececec}
+
+.weui-check{position:absolute;left:-9999px}
+
+.weui-check__hd_in-checkbox{padding-right:.35em}
