@@ -19,11 +19,6 @@ import time
 
 @csrf_exempt
 def publishweibo(request):
-    try:
-        Isvalid = request.POST['isvalid']
-    except:
-        Isvalid = 2
-    print Isvalid
     num = 1
     try:
         area = request.POST['area']
@@ -49,7 +44,9 @@ def publishweibo(request):
     return HttpResponse("Hello world ! ")
 
 def publishsell(request):
-    pass
+    p =request.GET['x']
+    print p
+    return HttpResponse('succeed')
 
 def down(request):
     filename = 'F:/wxapp/server/default.png'

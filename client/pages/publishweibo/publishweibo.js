@@ -35,6 +35,13 @@ onLoad: function(options) {
     this.chooseimage()
   },
 
+skip: function (e) {
+  wx.navigateTo({
+    url: '../../pages/publishsell/publishsell'
+  })
+},
+
+
   bindPickerChange: function (e) {
      console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({

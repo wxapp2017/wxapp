@@ -4,7 +4,7 @@
   <form bindsubmit="formSubmit" class="signup-form" >
   <view class="content-column">
   <view class="title-publish"> 
-     <text class="signup-text">11111</text>
+     <button bindtap='skip' class="signup-text">11111</button>
      <button
         formType="submit"
         class="signup-btn">

@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.publishweibo),
     url(r'^down/$', views.down),
+    url(r'^publishsell/$', views.publishsell),
 ]

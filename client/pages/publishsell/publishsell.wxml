@@ -1,5 +1,17 @@
 <!--pages/publishsell/publishsell.wxml-->
 <view class="content-colum">
+<view> 
+     <button
+        bindtap="submit"
+        class="signup-btn">
+        提交
+      </button>
+      <button
+        bindtap="skip"
+        class="signup-btn">
+        返回
+      </button>
+  </view>
 <view class='content-row'>
       <view class="signup-item">
         商品类型
@@ -17,7 +29,7 @@
 <image class="pic_upload"  src="./pic/addpic.jpg" bindtap="previewImage"></image>
 
 <view class="price"><text >价格: </text>
-<input  maxlength="10" placeholder="RMB" /></view>
+<input name='price' maxlength="10" placeholder="RMB" /></view>
 
 </view>
 
@@ -25,7 +37,7 @@
         <view class="after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="介绍一下的你商品..." style="height: 3.3em" />
+                    <textarea name='pro_introduct' class="weui-textarea" placeholder="介绍一下的你商品..." style="height: 3.3em" />
                     <view class="weui-textarea-counter">0/200</view>
                 </view>
             </view>
@@ -38,7 +50,7 @@
                     <view class="weui-label">详细地址</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input placeholder="请输入"/>
+                    <input name='pro_address' placeholder="请输入"/>
                 </view>
             </view>
             </view>
@@ -47,7 +59,7 @@
                     <view class="weui-label">院区</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <picker bindchange="bindAreaChange" value="{{areaindex}}" range="{{arearange}}">
+                    <picker name='pro_area' bindchange="bindAreaChange" value="{{areaindex}}" range="{{arearange}}">
                         <view class="weui-select_in-select-after">{{arearange[areaindex]}}</view>
                     </picker>
                 </view>
@@ -57,7 +69,7 @@
         
             <checkbox-group bindchange="checkboxChange">
                 <label wx:for="{{checkboxItems}}">
-                    <checkbox value="{{item.value}}" checked="{{item.checked}}"/>   
+                    <checkbox name='delivery' value="{{item.value}}" checked="{{item.checked}}"/>   
                     {{item.name}}     
                 </label>
             </checkbox-group>

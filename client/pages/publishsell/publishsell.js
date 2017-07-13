@@ -59,6 +59,26 @@ Page({
   
   },
 
+submit: function (e){
+  console.log(this.data.areaindex)
+  wx.request({
+    url: 'http://127.0.0.1:8000/publishsell',
+    data:{
+      x : this.data.areaindex
+      y : this.data. 
+    },
+    success: function(res) {
+      console.log(res.data)
+  }
+  })
+},
+
+skip: function (e){
+  wx.navigateTo({
+    url: '../../pages/publishweibo/publishweibo'
+  })
+},
+
 bindPickerChange: function (e) {
      console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
