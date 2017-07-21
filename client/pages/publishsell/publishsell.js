@@ -65,7 +65,7 @@ submit: function (e){
     url: 'http://127.0.0.1:8000/publishsell',
     data:{
       x : this.data.areaindex
-      y : this.data. 
+      // y : this.data. 
     },
     success: function(res) {
       console.log(res.data)

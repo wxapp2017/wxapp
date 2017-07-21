@@ -1,0 +1,93 @@
+<!--pages/readweibo/readweibo.wxml-->
+<!--index.wxml-->
+<view class="body">
+  <view class="border-slice">
+    <view class="head">
+      <view class="index-head-logo">
+        <image class="index-head-logo-img" src="./pic/130874432266460890.jpg"></image>
+        <text >
+          话题  7179 | 访问 984328
+        </text>
+      </view>
+       <view class="head-banner"></view> 
+    </view>
+
+    <view class="index-head-bottom">
+        <button bindtap='skip' class="flex">发布</button>
+        <view class="flex"><view class="index-focus"></view>关注</view>
+    </view>
+    <view class="head-announcement">
+      <view><view class="announcement-icon02"></view><text></text></view>
+      <view><view class="announcement-icon02"></view><view></view></view>
+    </view>
+  </view>
+  <view class="index-heading-scrol">
+    <scroll-view class="index-heading-content" scroll-x="true" style="width:100%">
+
+     <view class="fl bankuai "><text>全部</text></view>
+      <view class="fl bankuai "><text>热帖</text></view>
+      <view  class="fl bankuai "><text>运营日报</text></view>
+      <view  class="fl bankuai "><text>操作指南</text></view>
+      <view  class="fl bankuai "><text>常见问题</text></view>
+      <view  class="fl bankuai "><text>微赞故事</text></view>
+    </scroll-view>
+  </view>
+
+
+   <view class="scrollview-hide"></view>  
+  
+  
+  <scroll-view class="content-body">
+
+
+ <view class="content" wx:for="{{tiezi}}">
+ <!-- 帖子内容 -->
+
+<view class="content-tittle">
+ <image class='content-tittle-guanzhu' src="./pic/guanzhu.png"></image> 
+
+<image class='content-tittle-head' src="./pic/130874432266460890.jpg"></image>
+
+<view class='content-tittle-a'>
+<text class='content-tittle-name'>keith</text>
+<text class='content-tittle-time'>{{item.date}}</text>
+</view>
+
+</view>
+
+<view class='content-essay'>{{item.essay}}</view>
+
+<view class="content-pic">
+
+<image class="content-pic-show" src="./pic/addpic.jpg" plain='True' bindtap="bindViewTap"></image>
+<image class="content-pic-show" src="http://127.0.0.1:8000/pic/?path={{item.pic}}" plain='True' bindtap="bindViewTap"></image>
+
+
+</view>
+
+<view class="content-bottom">
+
+<view class="content-bottom-a">
+<image class="content-bottom-pic" src="./pic/zhuanfa.png" plain='True' bindtap="bindViewTap"></image>
+<text class="content-bottom-text">转发</text>
+</view>
+<view class="content-bottom-a">
+<image class="content-bottom-pic" src="./pic/pinglun.png" plain='True' bindtap="bindViewTap"></image>
+<text class="content-bottom-text">评论</text>
+</view>
+<view class="content-bottom-a">
+<image class="content-bottom-pic" src="./pic/dianzan1.png" plain='True' bindtap="bindViewTap"></image>
+<text class="content-bottom-text">点赞</text>
+</view>
+
+</view>
+
+</view>
+ 
+
+
+
+  </scroll-view>
+</view>
+
+

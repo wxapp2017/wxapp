@@ -22,4 +22,7 @@ urlpatterns = [
     url(r'^$', views.publishweibo),
     url(r'^down/$', views.down),
     url(r'^publishsell/$', views.publishsell),
+    url(r'^readweibo/$', views.readweibo),
+    url(r'^pic/$', views.pic),
+
 ]

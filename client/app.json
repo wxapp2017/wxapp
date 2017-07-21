@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/readweibo/readweibo",
     "pages/publishsell/publishsell",
     "pages/publishweibo/publishweibo"
   ],

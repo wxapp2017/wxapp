@@ -100,7 +100,7 @@ skip: function (e) {
     var formData = e.detail.value
     var pics = this.data.uploadpic
     var indeximage = this.data.indeximage[0]
-            wx.uploadFile({
+    const uploadTask = wx.uploadFile({
               url: 'http://127.0.0.1:8000/', //仅为示例，非真实的接口地址
               filePath: indeximage,
               name: 'photo',
@@ -126,7 +126,20 @@ skip: function (e) {
                 console.log(res.data)
           }
         })
-          }
+
+    uploadTask.onProgressUpdate((res)=>{
+      console.log('上传进度',res.progress)
+      console.log('已经上传的数据长度',res.totalBytesSent)
+      console.log('预期需要上传的数据总长度',res.totalBytesExpectedToSend)
+      })
+    wx.navigateTo({
+      url: '../../pages/readweibo/readweibo'
+    })
+
+  }
+
+
+
   //   formSubmit: function(e){
   //   console.log(e.detail.value)
   //   var formData = e.detail.value
@@ -166,3 +179,5 @@ skip: function (e) {
 
 
 })
+
+
