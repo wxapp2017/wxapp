@@ -7,6 +7,7 @@ import datetime
 # Create your models here.
 class Essay(models.Model):
 	area = models.IntegerField()
-	Essay = models.CharField(max_length=1000)
-	pic_path = models.CharField(max_length=50)
+	essay = models.CharField(max_length=1000)
+	pic = models.CharField(max_length=50)
 	create_time = models.DateTimeField()
+	sign = models.CharField(max_length=50)

@@ -14,7 +14,9 @@ App({
             url: data.url, 
             filePath: data.path[i],
             name: 'photo',
-            formData:null,
+            formData:{
+                'sign' : data.arg
+            },
             success: (resp) => {
                success++;
                console.log(resp)

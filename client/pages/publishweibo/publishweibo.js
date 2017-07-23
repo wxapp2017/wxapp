@@ -95,9 +95,11 @@ skip: function (e) {
 
 
    formSubmit: function(e){
+    var myDate = Date.parse(new Date());
     var that = this
-    console.log(this.data.pic)
+    // console.log(this.data.pic)
     var formData = e.detail.value
+    formData['sign'] = myDate
     var pics = this.data.uploadpic
     var indeximage = this.data.indeximage[0]
     const uploadTask = wx.uploadFile({
@@ -109,7 +111,8 @@ skip: function (e) {
                   if(that.data.pic>0){
                     app.uploadimg({
                     url: 'http://127.0.0.1:8000/',
-                    path:pics
+                    path:pics,
+                    arg: myDate
                   })
                   }
                   
@@ -127,11 +130,11 @@ skip: function (e) {
           }
         })
 
-    uploadTask.onProgressUpdate((res)=>{
-      console.log('上传进度',res.progress)
-      console.log('已经上传的数据长度',res.totalBytesSent)
-      console.log('预期需要上传的数据总长度',res.totalBytesExpectedToSend)
-      })
+    // uploadTask.onProgressUpdate((res)=>{
+    //   console.log('上传进度',res.progress)
+    //   console.log('已经上传的数据长度',res.totalBytesSent)
+    //   console.log('预期需要上传的数据总长度',res.totalBytesExpectedToSend)
+    //   })
     wx.navigateTo({
       url: '../../pages/readweibo/readweibo'
     })

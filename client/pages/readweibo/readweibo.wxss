@@ -7,12 +7,10 @@
 	
 }
 
-
 .content{
 	display: flex;  
-  	flex-direction: column;  
+  flex-direction: column;  
 	background:#fff;
-	
 	margin-bottom:14rpx;
 }
 
@@ -24,8 +22,8 @@
 .content-tittle-head{
 	float: left;
 	width: 12%;
-  	height: 90rpx;
-  	margin-left:10rpx;
+  height: 90rpx;
+  margin-left:10rpx;
 }
 
 .content-tittle-guanzhu{
@@ -148,7 +146,6 @@ page {
   height: 110px;
 }
 .head-banner {
-  background: url(./pic/050_app[1].jpg) no-repeat;
   background-size: 100%;
   height: 110px;
   position: absolute;

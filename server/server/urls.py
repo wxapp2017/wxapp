@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^publishsell/$', views.publishsell),
     url(r'^readweibo/$', views.readweibo),
     url(r'^pic/$', views.pic),
+    url(r'^previewimage/$',views.previewImage)
 
 ]

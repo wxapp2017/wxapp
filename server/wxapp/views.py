@@ -23,56 +23,73 @@ cache_area = []
 cache_essay = []
 cache_date = []
 cache_pic = []
+cache_sign = []
 
 ca = Essay.objects.all()
 for i in ca.values('create_time'):
     cache_date.append(i.values()[0].strftime('%Y-%m-%d %H:%M:%S'))
-
-for i in ca.values('Essay'):
+#
+for i in ca.values('essay'):
     cache_essay.append(i.values()[0])
 
-for i in ca.values('pic_path'):
-    cache_pic.append(i.values()[0])
+for i in ca.values('pic'):
+    cache_pic.append(i.values()[0].split())     #列表
+
+for i in ca.values('sign'):
+    cache_sign.append(str(i.values()[0]))
+
 
 for i in xrange(len(ca.values('create_time'))):
-    cache.append({'essay':cache_essay[i],'date':cache_date[i],'pic':cache_pic[i]})
+    cache.append({'essay':cache_essay[i],'date':cache_date[i],'pic':cache_pic[i],'sign':cache_sign[i]})
 
 
 @csrf_exempt
 def publishweibo(request):
     global cache
-
+    sign = request.POST['sign']
+    path = '/dat/%s/' % (sign)
+    photo_path = '.' + path
     num = 1
     try:
+        print u'第一次带文字输入'
         area = request.POST['area']
         cache_area.append(area)
         essay = request.POST['essay']
         cache_essay.append(essay)
         date = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
         cache_date.append(date)
-        cache.append({'area':area,'essay':essay,'date':date})
-        p = Essay(area=area, Essay=essay, create_time=date)
+        if not sign in cache_sign:
+            cache_sign.append(sign)
+            cache_pic.append([])
+            os.mkdir(r'./dat/%s/' % (sign))
+        cache.append({'area':area,'essay':essay,'date':date,'sign':sign,'pic':[]})
+        p = Essay(area=area, essay=essay, create_time=date,sign=sign)
         p.save()
     except:
         print 'fault'
         pass
     print u'多图片上传'
     photo = request.FILES['photo']
-    photo_path = './dat/upload_pic/'
     photo_last = str(photo).split('.')[-1]
     photo_name = '%s.%s' % (str(num),photo_last)
     while os.path.exists(photo_path+photo_name):
         num = num + 1
         photo_name = '%s.%s' % (str(num), photo_last)
-        print photo_name
+        # print photo_name
     f = open(photo_path + photo_name, 'wb+')
     f.write(photo.read())
     f.close()
-    p = Essay.objects.filter(create_time=date).update(pic_path='/dat/upload_pic/'+photo_name)
+
     for i in xrange(len(cache)):
-        if cache[i]['date'] == date:
-            cache[i]['pic'] = '/dat/upload_pic/'+photo_name
-    p.save()
+        if cache[i]['sign'] == sign:
+            cache_pic[i].append(path+photo_name)
+            cache[i]['pic'].append(path+photo_name)
+
+            p = Essay.objects.filter(sign=sign).update(pic=' '.join(cache[i]['pic']))
+    try:
+        p.save()
+    except:
+        pass
     print cache
     return HttpResponse("Hello world ! ")
 
@@ -82,9 +99,29 @@ def readweibo(request):
     send_cache = json.dumps(send_cache)
     return HttpResponse(send_cache)
 
+def previewImage(request):
+    pic_url = str(request.GET['pic_url'])
+    pic_list = []
+    sign = pic_url[pic_url.rfind('dat/')+4:pic_url.rfind('/')]
+    print sign
+    print cache_sign
+    for i in cache:
+        if i['sign'] == sign:
+            pic_list = i['pic']
+    print pic_list
+    for j in xrange(len(pic_list)):
+        print pic_list[j]
+        print type(pic_list[j])
+        pic_list[j] = 'http://127.0.0.1:8000/pic/?path='+str(pic_list[j])
+    print pic_list
+    send_pic_list = json.dumps(pic_list)
+    return HttpResponse(send_pic_list)
+
 def pic(request):
     p = request.GET.get('path')
     print p
+    print 1111111
+    print type(p)
     filename = '.'+p
     f = open(filename, 'rb')
     c = f.read()

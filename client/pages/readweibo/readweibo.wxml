@@ -9,7 +9,7 @@
           话题  7179 | 访问 984328
         </text>
       </view>
-       <view class="head-banner"></view> 
+       <view class="head-banner" style="background-image: url(./pic/050_app[1].jpg); background-repeat: no-repeat;"></view> 
     </view>
 
     <view class="index-head-bottom">
@@ -59,8 +59,8 @@
 
 <view class="content-pic">
 
-<image class="content-pic-show" src="./pic/addpic.jpg" plain='True' bindtap="bindViewTap"></image>
-<image class="content-pic-show" src="http://127.0.0.1:8000/pic/?path={{item.pic}}" plain='True' bindtap="bindViewTap"></image>
+<!-- <image class="content-pic-show" src="./pic/addpic.jpg" plain='True' bindtap="bindViewTap"></image> -->
+<image  wx:for="{{item.pic}}" class="content-pic-show" data-src="http://127.0.0.1:8000/pic/?path={{item}}" src="http://127.0.0.1:8000/pic/?path={{item}}" plain='True' bindtap="previewImage"></image>
 
 
 </view>
