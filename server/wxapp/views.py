@@ -7,6 +7,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 import os
 import json
+import copy
 from PIL import Image
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -95,6 +96,7 @@ def publishweibo(request):
 
 def readweibo(request):
     global cache
+    print cache
     send_cache = list(reversed(cache))
     send_cache = json.dumps(send_cache)
     return HttpResponse(send_cache)
@@ -103,25 +105,18 @@ def previewImage(request):
     pic_url = str(request.GET['pic_url'])
     pic_list = []
     sign = pic_url[pic_url.rfind('dat/')+4:pic_url.rfind('/')]
-    print sign
-    print cache_sign
     for i in cache:
         if i['sign'] == sign:
-            pic_list = i['pic']
-    print pic_list
+            pic_list = copy.deepcopy(i['pic'])
+            break
     for j in xrange(len(pic_list)):
-        print pic_list[j]
-        print type(pic_list[j])
         pic_list[j] = 'http://127.0.0.1:8000/pic/?path='+str(pic_list[j])
-    print pic_list
+
     send_pic_list = json.dumps(pic_list)
     return HttpResponse(send_pic_list)
 
 def pic(request):
     p = request.GET.get('path')
-    print p
-    print 1111111
-    print type(p)
     filename = '.'+p
     f = open(filename, 'rb')
     c = f.read()
@@ -137,8 +132,6 @@ def down(request):
     filename = './dat/upload_pic/1.png'
     f = open(filename,'rb')
     c = f.read()
-    # print c
-    # f .close()
     response = HttpResponse(c, content_type='application/octet-stream')
     response['Content-Disposition'] = 'attachment; filename=default.png'
     return response

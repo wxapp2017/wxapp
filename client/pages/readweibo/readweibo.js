@@ -28,14 +28,12 @@ onLoad: function(options) {
     })
   },
 
- previewImage: function(e) {
-   
-  var current=e.target.dataset.src;  
+previewImage: function(e) {
+  var that = this
+  var current=e.target.dataset.src; 
+  var pic_list = [];
   var c = current.split();
   console.log(c)
-
-  // console.log(pic_copy)
-  // console.log('列表：'+pic_copy)
 
    wx.request({
       url: 'http://127.0.0.1:8000/previewimage', //仅为示例，并非真实的接口地址
@@ -43,22 +41,14 @@ onLoad: function(options) {
         pic_url:current
       },
       success: function (res) {
-        console.log('2141243123')
-        console.log(res)
-        console.log(res.data)
+        that.pic_list = res.data
+        wx.previewImage({  
+          current: current, // 当前显示图片的http链接  
+          urls: that.pic_list // 需要预览的图片http链接列表  
+        })
       }
-    })
-
-  //  for(var i=0; i<pic_copy.length; i++){
-  //   pic_copy[i] = 'http://127.0.0.1:8000/pic/?path='+pic_copy[i]
-  //   }  
-  
-  
-  // wx.previewImage({  
-  //     current: current, // 当前显示图片的http链接  
-  //     urls: pic_copy // 需要预览的图片http链接列表  
-  // })  
-    },    
+    })    
+},    
 
 skip: function (e) {
   wx.navigateTo({
